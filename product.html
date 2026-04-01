@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Produkt - Alex Store</title>
+  </head>
+  <body>
+    <nav class="site-nav navbar navbar-expand-lg">
+      <div class="container-fluid nav-wrap">
+        <a class="navbar-brand brand" href="index.html">Alex Store</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navBar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBar">
+          <div class="nav-links ms-auto">
+            <a class="nav-link" data-page="home" href="index.html"
+              ><span>🏠</span><span>Hem</span></a
+            >
+            <a class="nav-link" data-page="products" href="products.html"
+              ><span>🛍️</span><span>Produkter</span></a
+            >
+            <a class="nav-link" data-page="favorites" href="favorites.html"
+              ><span>❤️</span><span>Favoriter</span></a
+            >
+
+            <div class="cart-link-wrap">
+              <a
+                class="nav-link"
+                data-page="cart"
+                href="cart.html"
+                id="cartLink"
+              >
+                <span>🛒</span><span class="d-none d-sm-inline">Varukorg</span>
+                <span class="badge-dot" data-cart-badge>0</span>
+              </a>
+              <div id="miniCart" class="mini-cart"></div>
+            </div>
+
+            <div class="nav-dropdown">
+              <button
+                id="moreMenuToggle"
+                class="dropdown-toggle-btn"
+                type="button"
+              >
+                <span>☰</span><span>Mer</span>
+              </button>
+              <div id="moreMenu" class="dropdown-menu-custom">
+                <a class="dropdown-link" data-page="payment" href="payment.html"
+                  ><span>💳</span><span>Betalning</span></a
+                >
+                <a class="dropdown-link" data-page="orders" href="orders.html"
+                  ><span>📦</span><span>Mina beställningar</span></a
+                >
+                <a class="dropdown-link" data-page="about" href="about.html"
+                  ><span>ℹ️</span><span>Om oss</span></a
+                >
+                <a class="dropdown-link" data-page="contact" href="contact.html"
+                  ><span>✉️</span><span>Kontakt</span></a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-link admin-only d-none" href="admin.html"
+                  ><span>🧑‍💼</span><span>Admin</span></a
+                >
+              </div>
+            </div>
+
+            <div id="profileChip" class="profile-chip"></div>
+            <button class="btn btn-outline-secondary btn-sm" id="themeBtn">
+              Tema
+            </button>
+            <button class="btn btn-danger btn-sm" id="logoutBtn">
+              Logga ut
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="quickViewOverlay" class="quick-view-overlay"></div>
+    <div id="chatbotPanel" class="chatbot-panel panel">
+      <div
+        class="d-flex justify-content-between align-items-center p-3 border-bottom"
+      >
+        <strong>Alex Assistant</strong>
+        <button id="chatbotClose" class="btn btn-outline-secondary btn-sm">
+          ✕
+        </button>
+      </div>
+      <div id="chatbotMessages" class="chatbot-messages"></div>
+      <div class="chatbot-actions">
+        <input
+          id="chatbotInput"
+          class="form-control"
+          type="text"
+          placeholder="Skriv en fråga..."
+        />
+        <button id="chatbotSend" class="btn btn-primary btn-sm">Skicka</button>
+      </div>
+    </div>
+    <button id="chatbotLauncher" class="chatbot-launcher" type="button">
+      🤖
+    </button>
+    <a href="cart.html" class="btn btn-primary mobile-sticky-cart"
+      >🛒 Till varukorgen</a
+    >
+
+    <div class="container">
+      <a href="products.html" class="btn btn-outline-secondary btn-sm mb-3"
+        >← Tillbaka till produkter</a
+      >
+      <div id="productDetail"></div>
+      <div class="section-head mt-5 fade-in">
+        <h2 class="section-title">Du kanske också gillar</h2>
+        <p>Tre relaterade produkter från samma kategori.</p>
+      </div>
+      <div id="relatedProducts"></div>
+    </div>
+    <script src="common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        requireCustomer();
+        initCommonUI("products");
+        initScrollAnimations();
+        const id = Number(
+          new URLSearchParams(window.location.search).get("id"),
+        );
+        const target = document.getElementById("productDetail");
+        try {
+          const products = await fetchProducts();
+          const product = products.find((p) => p.id === id);
+          if (!product) {
+            target.innerHTML =
+              '<div class="alert alert-danger">Produkten hittades inte.</div>';
+            return;
+          }
+          target.innerHTML = `
+      <div class="row">
+        <div class="col-lg-6 fade-in"><div class="panel text-center"><img src="${product.image}" alt="${product.title}" style="max-height:420px;width:100%;object-fit:contain;"></div></div>
+        <div class="col-lg-6 fade-in"><div class="panel">
+          <div class="product-category mb-2">${product.category}</div>
+          <h1 class="h2">${product.title}</h1>
+          <p class="small">${product.description}</p>
+          <div class="d-flex justify-content-between align-items-center mb-3"><span class="price">${formatPrice(product.price)}</span><span class="small">⭐ ${product.rating?.rate ?? 4.0}</span></div>
+          <div class="d-flex gap-2">
+            <button id="buyBtn" class="btn btn-primary">Lägg i varukorg</button>
+            <button id="favBtn" class="btn ${isFavorite(product.id) ? "btn-danger active" : "btn-outline-secondary"}">${isFavorite(product.id) ? "Ta bort favorit" : "Lägg till favorit"}</button>
+          </div>
+        </div></div>
+      </div>`;
+          document
+            .getElementById("buyBtn")
+            .addEventListener("click", () =>
+              addToCart(product, document.querySelector("#productDetail img")),
+            );
+          const related = products
+            .filter(
+              (p) => p.category === product.category && p.id !== product.id,
+            )
+            .slice(0, 3);
+          document.getElementById("relatedProducts").innerHTML = related.length
+            ? `<div class="row g-4">${related.map(productCard).join("")}</div>`
+            : `<div class="empty-box">Inga relaterade produkter hittades.</div>`;
+          bindProductButtons(related);
+          document.getElementById("favBtn").addEventListener("click", (e) => {
+            toggleFavorite(product);
+            e.currentTarget.classList.toggle("btn-danger");
+            e.currentTarget.classList.toggle("btn-outline-secondary");
+            e.currentTarget.classList.toggle("active");
+            e.currentTarget.textContent = isFavorite(product.id)
+              ? "Ta bort favorit"
+              : "Lägg till favorit";
+          });
+          initScrollAnimations();
+        } catch {
+          target.innerHTML =
+            '<div class="alert alert-danger">Kunde inte ladda produkten.</div>';
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

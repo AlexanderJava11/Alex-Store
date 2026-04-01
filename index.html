@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hem - Alex Store</title>
+  </head>
+  <body>
+    <nav class="site-nav navbar navbar-expand-lg">
+      <div class="container-fluid nav-wrap">
+        <a class="navbar-brand brand" href="index.html">Alex Store</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navBar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBar">
+          <div class="nav-links ms-auto">
+            <a class="nav-link" data-page="home" href="index.html"
+              ><span>🏠</span><span>Hem</span></a
+            >
+            <a class="nav-link" data-page="products" href="products.html"
+              ><span>🛍️</span><span>Produkter</span></a
+            >
+            <a class="nav-link" data-page="favorites" href="favorites.html"
+              ><span>❤️</span><span>Favoriter</span></a
+            >
+
+            <div class="cart-link-wrap">
+              <a
+                class="nav-link"
+                data-page="cart"
+                href="cart.html"
+                id="cartLink"
+              >
+                <span>🛒</span><span class="d-none d-sm-inline">Varukorg</span>
+                <span class="badge-dot" data-cart-badge>0</span>
+              </a>
+              <div id="miniCart" class="mini-cart"></div>
+            </div>
+
+            <div class="nav-dropdown">
+              <button
+                id="moreMenuToggle"
+                class="dropdown-toggle-btn"
+                type="button"
+              >
+                <span>☰</span><span>Mer</span>
+              </button>
+              <div id="moreMenu" class="dropdown-menu-custom">
+                <a class="dropdown-link" data-page="payment" href="payment.html"
+                  ><span>💳</span><span>Betalning</span></a
+                >
+                <a class="dropdown-link" data-page="orders" href="orders.html"
+                  ><span>📦</span><span>Mina beställningar</span></a
+                >
+                <a class="dropdown-link" data-page="about" href="about.html"
+                  ><span>ℹ️</span><span>Om oss</span></a
+                >
+                <a class="dropdown-link" data-page="contact" href="contact.html"
+                  ><span>✉️</span><span>Kontakt</span></a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-link admin-only d-none" href="admin.html"
+                  ><span>🧑‍💼</span><span>Admin</span></a
+                >
+              </div>
+            </div>
+
+            <div id="profileChip" class="profile-chip"></div>
+            <button class="btn btn-outline-secondary btn-sm" id="themeBtn">
+              Tema
+            </button>
+            <button class="btn btn-danger btn-sm" id="logoutBtn">
+              Logga ut
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="quickViewOverlay" class="quick-view-overlay"></div>
+    <div id="chatbotPanel" class="chatbot-panel panel">
+      <div
+        class="d-flex justify-content-between align-items-center p-3 border-bottom"
+      >
+        <strong>Alex Assistant</strong>
+        <button id="chatbotClose" class="btn btn-outline-secondary btn-sm">
+          ✕
+        </button>
+      </div>
+      <div id="chatbotMessages" class="chatbot-messages"></div>
+      <div class="chatbot-actions">
+        <input
+          id="chatbotInput"
+          class="form-control"
+          type="text"
+          placeholder="Skriv en fråga..."
+        />
+        <button id="chatbotSend" class="btn btn-primary btn-sm">Skicka</button>
+      </div>
+    </div>
+    <button id="chatbotLauncher" class="chatbot-launcher" type="button">
+      🤖
+    </button>
+    <a href="cart.html" class="btn btn-primary mobile-sticky-cart"
+      >🛒 Till varukorgen</a
+    >
+
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source
+          src="https://www.w3schools.com/howto/rain.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="fade-in">
+            <span class="badge text-bg-primary mb-3">Premium shopping</span>
+            <h1 class="section-title">Modern webbshop med wow-känsla</h1>
+            <p class="lead">
+              Shoppa produkter, spara favoriter, använd quick view, mini cart
+              och upplev en sida som känns som en riktig startup.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="products.html" class="btn btn-primary">Se produkter</a>
+              <a href="about.html" class="btn btn-light">Läs mer om oss</a>
+            </div>
+          </div>
+          <div class="hero-photo-grid fade-in">
+            <div class="hero-photo hero-photo-1"></div>
+            <div class="hero-photo hero-photo-2"></div>
+            <div class="hero-photo hero-photo-3"></div>
+            <div class="hero-photo hero-photo-4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container">
+      <div class="section-head fade-in">
+        <h2 class="section-title">Designad för att kännas premium</h2>
+        <p>Fler bilder, mer liv och tydligare sektioner på startsidan.</p>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4 fade-in">
+          <div class="panel feature-panel h-100">
+            <div class="feature-icon">⚡</div>
+            <h3 class="h5">Snabb upplevelse</h3>
+            <p class="small">
+              Tydlig navigation, mini cart, sticky mobilknapp och mjuka
+              animationer gör sidan modern och lätt att använda.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="panel feature-panel h-100">
+            <div class="feature-icon">🎨</div>
+            <h3 class="h5">Mer visuellt innehåll</h3>
+            <p class="small">
+              Fler bilder, video i hero och Apple-lik glassmorphism ger
+              premiumkänsla.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="panel feature-panel h-100">
+            <div class="feature-icon">🤖</div>
+            <h3 class="h5">Demoassistent</h3>
+            <p class="small">
+              En chatbot i hörnet hjälper användaren med vanliga frågor utan att
+              störa designen.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-head fade-in">
+        <h2 class="section-title">Inspiration & stil</h2>
+        <p>En extra bildsektion för att göra startsidan rikare och snyggare.</p>
+      </div>
+      <div class="home-gallery mb-5 fade-in">
+        <div class="gallery-card gallery-a"></div>
+        <div class="gallery-card gallery-b"></div>
+        <div class="gallery-card gallery-c"></div>
+        <div class="gallery-card gallery-d"></div>
+        <div class="gallery-card gallery-e"></div>
+      </div>
+      <div class="section-head fade-in">
+        <h2 class="section-title">Populärt just nu</h2>
+        <p>Utvalda produkter från shoppen.</p>
+      </div>
+      <div id="featuredProducts"></div>
+    </div>
+    <div class="footer"><div class="container">© 2026 Alex Store</div></div>
+    <script src="common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        requireCustomer();
+        initCommonUI("home");
+        initScrollAnimations();
+        const wrap = document.getElementById("featuredProducts");
+        try {
+          const products = await fetchProducts();
+          wrap.innerHTML = `<div class="row g-4">${products.slice(0, 3).map(productCard).join("")}</div>`;
+          bindProductButtons(products);
+          initScrollAnimations();
+        } catch {
+          wrap.innerHTML = `<div class="alert alert-danger">Kunde inte ladda produkter.</div>`;
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

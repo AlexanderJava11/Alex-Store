@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Alex Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="login-showcase-page">
+    <div class="login-showcase-shell">
+      <div class="login-showcase-grid">
+        <section class="login-showcase-left">
+          <div class="login-sh owcase-overlay"></div>
+          <div class="login-showcase-content">
+            <div class="login-store-badge">Alex Store</div>
+            <h1>Mode, teknik och premium shopping i en modern butik.</h1>
+            <p>
+              Logga in för att upptäcka produkter, spara favoriter, följa
+              beställningar och uppleva en webbshop med riktig
+              e-commerce-känsla.
+            </p>
+
+            <div class="login-mini-cards">
+              <div class="login-mini-card">
+                <div class="login-mini-icon">🛍️</div>
+                <div>
+                  <strong>Utvalda produkter</strong>
+                  <span>Shoppa populära favoriter direkt från startsidan</span>
+                </div>
+              </div>
+
+              <div class="login-mini-card">
+                <div class="login-mini-icon">⚡</div>
+                <div>
+                  <strong>Snabb checkout</strong>
+                  <span
+                    >Smidig beställning, tydlig validering och enkel
+                    betalning</span
+                  >
+                </div>
+              </div>
+
+              <div class="login-mini-card">
+                <div class="login-mini-icon">💎</div>
+                <div>
+                  <strong>Premium upplevelse</strong>
+                  <span
+                    >Designad för att kännas mer som en riktig butik än en
+                    skoluppgift</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="login-showcase-right">
+          <div class="login-glass-card">
+            <div class="login-tabs">
+              <button class="login-tab active" id="showLoginTab" type="button">
+                Logga in
+              </button>
+              <button class="login-tab" id="showRegisterTab" type="button">
+                Skapa konto
+              </button>
+              <button class="login-tab" id="showAdminTab" type="button">
+                Admin
+              </button>
+            </div>
+
+            <div class="login-panel active" id="loginPanel">
+              <div class="login-panel-head">
+                <div class="login-panel-kicker">Välkommen tillbaka</div>
+                <h2>Logga in till din butik</h2>
+                <p>Fortsätt till produkter, favoriter och beställningar.</p>
+              </div>
+
+              <form id="customerLoginForm">
+                <label class="label" for="customerEmail">E-post</label>
+                <input
+                  class="form-control"
+                  id="customerEmail"
+                  type="email"
+                  placeholder="din@email.se"
+                />
+
+                <label class="label mt-3" for="customerPassword"
+                  >Lösenord</label
+                >
+                <input
+                  class="form-control"
+                  id="customerPassword"
+                  type="password"
+                  placeholder="Ditt lösenord"
+                />
+
+                <button class="btn btn-primary w-100 mt-4" type="submit">
+                  Logga in som kund
+                </button>
+              </form>
+
+              <div id="customerMsg"></div>
+            </div>
+
+            <div class="login-panel" id="registerPanel">
+              <div class="login-panel-head">
+                <div class="login-panel-kicker">Ny hos Alex Store?</div>
+                <h2>Skapa konto</h2>
+                <p>Registrera dig och börja utforska shoppen direkt.</p>
+              </div>
+
+              <form id="registerForm">
+                <label class="label" for="registerName">Namn</label>
+                <input
+                  class="form-control"
+                  id="registerName"
+                  type="text"
+                  placeholder="Ditt namn"
+                />
+
+                <label class="label mt-3" for="registerEmail">E-post</label>
+                <input
+                  class="form-control"
+                  id="registerEmail"
+                  type="email"
+                  placeholder="din@email.se"
+                />
+
+                <label class="label mt-3" for="registerPassword"
+                  >Lösenord</label
+                >
+                <input
+                  class="form-control"
+                  id="registerPassword"
+                  type="password"
+                  placeholder="Minst 4 tecken"
+                />
+
+                <button class="btn btn-success w-100 mt-4" type="submit">
+                  Skapa konto
+                </button>
+              </form>
+
+              <div id="registerMsg"></div>
+            </div>
+
+            <div class="login-panel" id="adminPanel">
+              <div class="login-panel-head">
+                <div class="login-panel-kicker">Administratör</div>
+                <h2>Admin-inloggning</h2>
+                <p>Öppna adminpanelen och hantera beställningar.</p>
+              </div>
+
+              <form id="adminLoginForm">
+                <label class="label" for="adminUsername">Användarnamn</label>
+                <input
+                  class="form-control"
+                  id="adminUsername"
+                  type="text"
+                  placeholder="admin"
+                />
+
+                <label class="label mt-3" for="adminPassword">Lösenord</label>
+                <input
+                  class="form-control"
+                  id="adminPassword"
+                  type="password"
+                  placeholder="1234"
+                />
+
+                <button class="btn btn-light w-100 mt-4" type="submit">
+                  Logga in som admin
+                </button>
+              </form>
+
+              <div id="adminMsg"></div>
+            </div>
+
+            <div class="login-bottom-note">
+              <span>🔒 Säker demo-login</span>
+              <span>✨ Modern butikskänsla</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const customerForm = document.getElementById("customerLoginForm");
+        const registerForm = document.getElementById("registerForm");
+        const adminForm = document.getElementById("adminLoginForm");
+
+        const loginPanel = document.getElementById("loginPanel");
+        const registerPanel = document.getElementById("registerPanel");
+        const adminPanel = document.getElementById("adminPanel");
+
+        const showLoginTab = document.getElementById("showLoginTab");
+        const showRegisterTab = document.getElementById("showRegisterTab");
+        const showAdminTab = document.getElementById("showAdminTab");
+
+        const tabs = [showLoginTab, showRegisterTab, showAdminTab];
+        const panels = [loginPanel, registerPanel, adminPanel];
+
+        function activateTab(tab, panel) {
+          tabs.forEach((t) => t.classList.remove("active"));
+          panels.forEach((p) => p.classList.remove("active"));
+          tab.classList.add("active");
+          panel.classList.add("active");
+        }
+
+        showLoginTab.addEventListener("click", () =>
+          activateTab(showLoginTab, loginPanel),
+        );
+        showRegisterTab.addEventListener("click", () =>
+          activateTab(showRegisterTab, registerPanel),
+        );
+        showAdminTab.addEventListener("click", () =>
+          activateTab(showAdminTab, adminPanel),
+        );
+
+        customerForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const email = document
+            .getElementById("customerEmail")
+            .value.trim()
+            .toLowerCase();
+          const password = document
+            .getElementById("customerPassword")
+            .value.trim();
+          const account = getAccounts().find(
+            (a) => a.email.toLowerCase() === email && a.password === password,
+          );
+
+          if (!account) {
+            showAlert("customerMsg", "danger", "Fel e-post eller lösenord.");
+            return;
+          }
+
+          if (typeof getUserEmail === "function") {
+            setUser(account.name, "customer", account.email);
+          } else {
+            setUser(account.name, "customer");
+          }
+
+          showAlert("customerMsg", "success", "Inloggning lyckades.");
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 600);
+        });
+
+        registerForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("registerName").value.trim();
+          const email = document
+            .getElementById("registerEmail")
+            .value.trim()
+            .toLowerCase();
+          const password = document
+            .getElementById("registerPassword")
+            .value.trim();
+          const accounts = getAccounts();
+
+          if (name.length < 2) {
+            showAlert("registerMsg", "danger", "Ange ett giltigt namn.");
+            return;
+          }
+
+          if (!email.includes("@")) {
+            showAlert("registerMsg", "danger", "Ange en giltig e-post.");
+            return;
+          }
+
+          if (password.length < 4) {
+            showAlert(
+              "registerMsg",
+              "danger",
+              "Lösenordet måste vara minst 4 tecken.",
+            );
+            return;
+          }
+
+          if (accounts.some((a) => a.email.toLowerCase() === email)) {
+            showAlert("registerMsg", "danger", "Denna e-post finns redan.");
+            return;
+          }
+
+          accounts.push({ name, email, password, role: "customer" });
+          setAccounts(accounts);
+          showAlert(
+            "registerMsg",
+            "success",
+            "Konto skapat! Du kan nu logga in.",
+          );
+          registerForm.reset();
+
+          setTimeout(() => {
+            activateTab(showLoginTab, loginPanel);
+          }, 700);
+        });
+
+        adminForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const username = document
+            .getElementById("adminUsername")
+            .value.trim();
+          const password = document
+            .getElementById("adminPassword")
+            .value.trim();
+
+          if (username === "admin" && password === "1234") {
+            if (typeof getUserEmail === "function") {
+              setUser("Admin", "admin", "admin@alexstore.local");
+            } else {
+              setUser("Admin", "admin");
+            }
+            showAlert("adminMsg", "success", "Admin inloggad.");
+            setTimeout(() => {
+              window.location.href = "admin.html";
+            }, 600);
+          } else {
+            showAlert("adminMsg", "danger", "Fel användarnamn eller lösenord.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

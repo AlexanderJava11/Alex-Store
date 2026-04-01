@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Om oss - Alex Store</title>
+  </head>
+  <body>
+    <nav class="site-nav navbar navbar-expand-lg">
+      <div class="container-fluid nav-wrap">
+        <a class="navbar-brand brand" href="index.html">Alex Store</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navBar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBar">
+          <div class="nav-links ms-auto">
+            <a class="nav-link" data-page="home" href="index.html"
+              ><span>🏠</span><span>Hem</span></a
+            >
+            <a class="nav-link" data-page="products" href="products.html"
+              ><span>🛍️</span><span>Produkter</span></a
+            >
+            <a class="nav-link" data-page="favorites" href="favorites.html"
+              ><span>❤️</span><span>Favoriter</span></a
+            >
+
+            <div class="cart-link-wrap">
+              <a
+                class="nav-link"
+                data-page="cart"
+                href="cart.html"
+                id="cartLink"
+              >
+                <span>🛒</span><span class="d-none d-sm-inline">Varukorg</span>
+                <span class="badge-dot" data-cart-badge>0</span>
+              </a>
+              <div id="miniCart" class="mini-cart"></div>
+            </div>
+
+            <div class="nav-dropdown">
+              <button
+                id="moreMenuToggle"
+                class="dropdown-toggle-btn"
+                type="button"
+              >
+                <span>☰</span><span>Mer</span>
+              </button>
+              <div id="moreMenu" class="dropdown-menu-custom">
+                <a class="dropdown-link" data-page="payment" href="payment.html"
+                  ><span>💳</span><span>Betalning</span></a
+                >
+                <a class="dropdown-link" data-page="orders" href="orders.html"
+                  ><span>📦</span><span>Mina beställningar</span></a
+                >
+                <a class="dropdown-link" data-page="about" href="about.html"
+                  ><span>ℹ️</span><span>Om oss</span></a
+                >
+                <a class="dropdown-link" data-page="contact" href="contact.html"
+                  ><span>✉️</span><span>Kontakt</span></a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-link admin-only d-none" href="admin.html"
+                  ><span>🧑‍💼</span><span>Admin</span></a
+                >
+              </div>
+            </div>
+
+            <div id="profileChip" class="profile-chip"></div>
+            <button class="btn btn-outline-secondary btn-sm" id="themeBtn">
+              Tema
+            </button>
+            <button class="btn btn-danger btn-sm" id="logoutBtn">
+              Logga ut
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="quickViewOverlay" class="quick-view-overlay"></div>
+    <div id="chatbotPanel" class="chatbot-panel panel">
+      <div
+        class="d-flex justify-content-between align-items-center p-3 border-bottom"
+      >
+        <strong>Alex Assistant</strong>
+        <button id="chatbotClose" class="btn btn-outline-secondary btn-sm">
+          ✕
+        </button>
+      </div>
+      <div id="chatbotMessages" class="chatbot-messages"></div>
+      <div class="chatbot-actions">
+        <input
+          id="chatbotInput"
+          class="form-control"
+          type="text"
+          placeholder="Skriv en fråga..."
+        />
+        <button id="chatbotSend" class="btn btn-primary btn-sm">Skicka</button>
+      </div>
+    </div>
+    <button id="chatbotLauncher" class="chatbot-launcher" type="button">
+      🤖
+    </button>
+    <a href="cart.html" class="btn btn-primary mobile-sticky-cart"
+      >🛒 Till varukorgen</a
+    >
+
+    <div class="container">
+      <div class="section-head mb-4 fade-in">
+        <h1 class="section-title">Om oss</h1>
+        <p>Vi vill göra online-shopping enkel, snabb och riktigt snygg.</p>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-lg-6 fade-in">
+          <div
+            class="panel h-100 about-hero-photo"
+            style="
+              min-height: 420px;
+              border-radius: 28px;
+              background-image: url(&quot;https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80&quot;);
+              background-size: cover;
+              background-position: center;
+              box-shadow: var(--shadow-lg);
+            "
+          ></div>
+        </div>
+        <div class="col-lg-6 fade-in">
+          <div class="panel h-100">
+            <h3 class="h4">Vilka vi är</h3>
+            <p>
+              Alex Store är en modern demo-webbutik byggd med HTML, CSS och
+              JavaScript. Projektet visar hur en riktig frontend-applikation kan
+              byggas upp med API, localStorage, varukorg, checkout, favoriter
+              och adminpanel.
+            </p>
+            <p>
+              Vi har fokuserat på både funktion och känsla — alltså att sidan
+              inte bara ska fungera, utan också se genomtänkt och professionell
+              ut.
+            </p>
+            <div class="about-badges">
+              <span>FakeStore API</span><span>Bootstrap</span
+              ><span>LocalStorage</span><span>Responsiv design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4 fade-in">
+          <div class="panel h-100 feature-panel">
+            <div class="feature-icon">💡</div>
+            <h3 class="h5">Idé</h3>
+            <p class="small">
+              Att bygga en stilren och användarvänlig butik som känns modern och
+              tydlig direkt när man kommer in på sidan.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="panel h-100 feature-panel">
+            <div class="feature-icon">🧠</div>
+            <h3 class="h5">Teknik</h3>
+            <p class="small">
+              Vi använder JavaScript för logik, FakeStore API för produkter och
+              localStorage för att spara kundens val mellan sidor.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="panel h-100 feature-panel">
+            <div class="feature-icon">🎯</div>
+            <h3 class="h5">Mål</h3>
+            <p class="small">
+              Målet är att ge användaren en upplevelse som känns som en riktig
+              e-handelsapp, inte bara en skoluppgift.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section-head mb-3 fade-in">
+        <h2 class="section-title">Här finns vi</h2>
+        <p>Skolan Nackademin Tomtebodavägen 3A, 171 65 Solna</p>
+      </div>
+      <div class="panel map-panel mb-5 fade-in">
+        <div class="map-copy">
+          <h3 class="h5">Nackademin, Solna</h3>
+          <p class="small">Skolan Nackademin Tomtebodavägen 3A, 171 65 Solna</p>
+          <p class="small">
+            Här har vi lagt in en karta som pekar mot Solna-området för att göra
+            Om oss-sidan mer levande och trovärdig.
+          </p>
+        </div>
+        <div class="map-frame-wrap">
+          <iframe
+            title="Karta över Nackademin"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=18.020%2C59.350%2C18.030%2C59.360&layer=mapnik&marker=59.355%2C18.025"
+            style="border: 0; width: 100%; height: 340px; border-radius: 20px"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      <div class="section-head mb-3 fade-in">
+        <h2 class="section-title">Bakom designen</h2>
+        <p>Mer visuellt innehåll även på Om oss-sidan.</p>
+      </div>
+      <div class="panel fade-in mb-4">
+        <h3 class="h5">Team & miljö</h3>
+        <p class="small mb-3">
+          Vi har lagt till en extra inspirationsbild för att göra Om oss-sidan
+          fylligare och mer levande.
+        </p>
+        <div class="about-extra-photo"></div>
+      </div>
+      <div class="about-gallery fade-in">
+        <div class="gallery-card gallery-a"></div>
+        <div class="gallery-card gallery-b"></div>
+        <div class="gallery-card gallery-c"></div>
+        <div class="gallery-card gallery-d"></div>
+      </div>
+    </div>
+    <script src="common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        requireCustomer();
+        initCommonUI("about");
+        initScrollAnimations();
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
